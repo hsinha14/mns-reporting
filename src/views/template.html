@@ -9,9 +9,54 @@
     <script src="../js/app.js"></script>
     <script src="../js/executiveSummary/executiveSummary.controller.js"></script>
     <script src="../js/common/createTable.directive.js"></script>
-
+    <script src="../js/papaparse.min.js"></script>
     <script src='http://js.nicedit.com/nicEdit-latest.js'></script>
+<script type="text/javascript">
+  /*  Papa.parse("../mock-data/all incidents.csv", {
+        download: true,
+        dynamicTyping: true,
+        complete: function(results) {
+            //console.log(results.data[1][8]);
+            //s.substring(0, s.indexOf(' '));
+            //var tempres=results.data[1];
+            //console.log(tempres[9]);
+            //console.log(results.data[2]);
+            var incidentDataJson=[
+            ["Weekly Report",,,,,,],
+            ["Overall","Green","Green","Green","Green","Green","Green"],
+            ["Incidents",,,,,,],
+            [
+            "Problem Records",
+            "0",
+            "2",
+            "1",
+            "1",
+            "0",
+            "2"
+        ]
+    ];
+            var incidentCount=0;
+            //console.log(results.data.length);
+            var dateSpan=[]
+            for (var i=1;i<results.data.length-1;i++) {
+                var getDate=results.data[i][8];
+                var daterange=getDate.substring(0, getDate.indexOf(' '));
+                var dateFrom = "9/19/2016";
+                var dateTo = "9/25/2016";
 
+                var from=new Date(dateFrom);
+                var to=new Date(dateTo);
+                var check=new Date(daterange);
+                if(check >= from && check <= to ) {
+                    incidentCount++;
+                }
+            }
+            console.log("incidentCount",incidentCount);
+
+
+        }
+    });*/
+</script>
 </head>
 <body>
     <main class="container" ng-app="weeklyReports" ng-controller="reportsCtrl">
@@ -47,22 +92,22 @@
 
         <section class="clearfix">
             <table id="incidents">
-                <caption>Incidents originating in Week ending  {{tableData.date}}</caption>
-                <tbody id="incidentDataTable" table-dir dataparam="tableData.incidentData"></tbody>
+                <caption>Incidents originating in Week ending  {{tableDatas.date}}</caption>
+                <tbody id="incidentDataTable" table-dir dataparam="tableDatas.incidentData" incident-data-json="incidentDataJson"></tbody>
             </table>
             <table id="slaView">
-                <caption>SLA View for Week ending {{tableData.date}}</caption>
-                <tbody id="slaViewTable" table-dir dataparam="tableData.slaView"></tbody>
+                <caption>SLA View for Week ending {{tableDatas.date}}</caption>
+                <tbody id="slaViewTable" table-dir dataparam="tableDatas.slaView"></tbody>
             </table>
             <table id="incidentSummary">
-                <caption>Incident Summary till {{tableData.date}}</caption>
+                <caption>Incident Summary till {{tableDatas.date}}</caption>
                 <tbody id="incidentSumTable" table-dir dataparam="tableData.incidentSummary"></tbody>
             </table>
         </section>
 
         <section>
             <h1>
-                M&S eCom Support Weekly Status Report - Week Ending  {{tableData.date}}
+                M&S eCom Support Weekly Status Report - Week Ending  {{tableDatas.date}}
             </h1>
             <div id="keyUpdates" class="sections">
                 <div class="header-div">

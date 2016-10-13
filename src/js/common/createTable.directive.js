@@ -5,13 +5,15 @@ app.directive('tableDir', function($http) {
     transclude: true,
     scope: {
       dataFromTable:'=dataparam',
-
+      incidentDataJson:'='
     },
     link: function(scope, element, attrs) {
-
-    scope.$watch('dataFromTable', function() {
+    /*scope.$watch('dataFromTable', function() {
         dataFromTable=scope.dataFromTable;
     });
+    scope.$watch('incidentDataJson',function(){
+        incidentDataJson=scope.incidentDataJson;
+    })*/
     },
     templateUrl: function(tElement, tAttrs) {
         if(tElement[0].id!==""){
